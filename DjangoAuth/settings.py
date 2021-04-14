@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'accounts',
     
-    'django-imagekit'
+    'imagekit'
 ]
 
 MIDDLEWARE = [
@@ -122,7 +122,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATCFILES_DIRS = [
+STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'frontend/static')
 ]
 

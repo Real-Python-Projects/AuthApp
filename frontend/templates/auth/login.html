@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Login
+{% endblock title %}
+
+
+{% block body %}
+    
+
+    <!-- =============Hero Area============= -->
+    <section class="hero-area bg_img" data-background="{% static 'assets/images/page-header.jpg' %}">
+        <div class="container">
+            <h1 class="title m-0">my account</h1>
+        </div>
+    </section>
+    <div class="breadcrumb-section">
+        <div class="container">
+            <ul class="breadcrumb">
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+                <li>
+                    sign-in
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- =============Hero Area============= -->
+
+    <!--=================Account Section================= -->
+    <section class="account-section padding-top padding-bottom bg_img bg_right_bottom"
+        data-background="{% static 'assets/images/account/account-bg.png' %}">
+        <div class="container">
+            <div class="account-wrapper">
+                <div class="account-area">
+                    <h3 class="account-title">sign-in your account</h3>
+                    <form class="sign-in-form">
+                        <div class="form-group">
+                            <input type="text" placeholder="User Name or Email">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" placeholder="Password" id="my-input-01">
+                            <span class="view-pass" id="view-pass-01">
+                                <i class="flaticon-eye"></i>
+                            </span>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Login Account">
+                        </div>
+                    </form>
+                    <div class="forget-pass-group d-flex flex-wrap justify-content-between">
+                        <div class="forget-pass">
+                            <p><a href="#0">forget password</a></p>
+                        </div>
+                        <div class="no-account">
+                            <p>Have Not Account in Here? <a href="registration.html">Sign-Up</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--=================Account Section================= -->
+
+    <!--=================Sponsor Section================= -->
+    <div class="sponsor-section padding-top padding-bottom">
+        <div class="container">
+            <div class="sponsor-slider">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="sponsor-thumb">
+                            <img src="{% static 'assets/images/sponsor/sponsor01.png"' %} alt="sponsor">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="sponsor-thumb">
+                            <img src="{% static 'assets/images/sponsor/sponsor02.png' %}" alt="sponsor">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="sponsor-thumb">
+                            <img src="{% static 'assets/images/sponsor/sponsor03.png' %}" alt="sponsor">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="sponsor-thumb">
+                            <img src="{% static 'assets/images/sponsor/sponsor04.png' %}" alt="sponsor">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="sponsor-thumb">
+                            <img src="{% static 'assets/images/sponsor/sponsor05.png' %}" alt="sponsor">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="sponsor-thumb">
+                            <img src="{% static 'assets/images/sponsor/sponsor06.png' %}" alt="sponsor">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="sponsor-thumb">
+                            <img src="{% static 'assets/images/sponsor/sponsor07.png' %}" alt="sponsor">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="sponsor-thumb">
+                            <img src="{% static 'assets/images/sponsor/sponsor08.png' %}" alt="sponsor">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--=================Sponsor Section================= -->
+
+    
+{% endblock body %}
+    

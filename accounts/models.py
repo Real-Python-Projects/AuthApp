@@ -20,6 +20,7 @@ class Profile(models.Model):
                             format='JPEG',
                             options={'quality':80})
     bio = models.TextField()
+    phone = models.CharField(max_length=13)
     tel_no = models.CharField(max_length=10)
     slug = models.SlugField(blank=True)
     
@@ -33,3 +34,18 @@ class Profile(models.Model):
         if not self.slug:
             self.slug = slugify(self.user.username)
         return super(Profile, self).save(*args, **kwargs)
+    
+    
+class PhoneDb(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    phone = models.CharField(max_length=13)
+    otp = models.IntegerField(null=True)
+    is_verified = models.BooleanField(default=True)
+    
+    def __str__(self):
+        return f"{self.user.username} - {self.phone}"
+    
+    class Meta:
+        verbose_name = "Phone Database"
+        verbose_name_plural = "Phone Databases"
+    

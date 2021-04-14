@@ -1,0 +1,221 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    Register
+{% endblock title %}
+
+
+{% block body %}
+    
+    <!-- =============Hero Area============= -->
+    <section class="hero-area bg_img" data-background="{% static 'assets/images/page-header.jpg' %}">
+        <div class="container">
+            <h1 class="title m-0">my account</h1>
+        </div>
+    </section>
+    <div class="breadcrumb-section">
+        <div class="container">
+            <ul class="breadcrumb">
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+                <li>
+                    sign-up
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- =============Hero Area============= -->
+
+    <!--=================Account Section================= -->
+    <section class="account-section padding-top padding-bottom bg_img bg_xxl_contain bg_right_bottom"
+        data-background="{% static 'assets/images/account/account-bg.png' %}">
+        <div class="container">
+            <div class="account-wrapper">
+                <div class="account-area">
+                    <h3 class="account-title">create new account</h3>
+                    <form class="sign-up-form">
+                        <div class="form-group">
+                            <input type="text" placeholder="First Name">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Last Name">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Email or Phone">
+                        </div>
+                        <div class="form-group">
+                            <select class="select-bar w-100">
+                                <option value="gender">Gender</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="custom">Custom</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" placeholder="Password" id="my-input-02">
+                            <span class="view-pass" id="view-pass-02">
+                                <i class="flaticon-eye"></i>
+                            </span>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" placeholder="Re-Password" id="my-input-03">
+                            <span class="view-pass" id="view-pass-03">
+                                <i class="flaticon-eye"></i>
+                            </span>
+                        </div>
+                        <div class="w-100">
+                            <div class="row">
+                                <div class="col-12">
+                                    <label>Birthday</label>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group w-100">
+                                        <select class="select-bar w-100">
+                                            <option value="01">01</option>
+                                            <option value="02">02</option>
+                                            <option value="03">03</option>
+                                            <option value="04">04</option>
+                                            <option value="05">05</option>
+                                            <option value="06">06</option>
+                                            <option value="07">07</option>
+                                            <option value="08">08</option>
+                                            <option value="09">09</option>
+                                            <option value="10">10</option>
+                                            <option value="11">11</option>
+                                            <option value="12">12</option>
+                                            <option value="12">12</option>
+                                            <option value="13">13</option>
+                                            <option value="14">14</option>
+                                            <option value="15">15</option>
+                                            <option value="16">16</option>
+                                            <option value="17">17</option>
+                                            <option value="18">18</option>
+                                            <option value="19">19</option>
+                                            <option value="20">20</option>
+                                            <option value="21">21</option>
+                                            <option value="22">22</option>
+                                            <option value="23">23</option>
+                                            <option value="24">24</option>
+                                            <option value="25">25</option>
+                                            <option value="26">26</option>
+                                            <option value="27">27</option>
+                                            <option value="28">28</option>
+                                            <option value="29">29</option>
+                                            <option value="30">30</option>
+                                            <option value="31">31</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group w-100">
+                                        <select class="select-bar w-100">
+                                            <option value="Month">Month</option>
+                                            <option value="January">January</option>
+                                            <option value="February">February</option>
+                                            <option value="March">March</option>
+                                            <option value="April">April</option>
+                                            <option value="May">May</option>
+                                            <option value="June">June</option>
+                                            <option value="July">July</option>
+                                            <option value="August">August</option>
+                                            <option value="September">September</option>
+                                            <option value="October">October</option>
+                                            <option value="November">November</option>
+                                            <option value="December">December</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="form-group w-100">
+                                        <select class="select-bar w-100">
+                                            <option value="year">Year</option>
+                                            <option value="1991">1991</option>
+                                            <option value="1992">1992</option>
+                                            <option value="1993">1993</option>
+                                            <option value="1994">1994</option>
+                                            <option value="1995">1995</option>
+                                            <option value="1996">1996</option>
+                                            <option value="1997">1997</option>
+                                            <option value="1998">1998</option>
+                                            <option value="1999">1999</option>
+                                            <option value="2000">2000</option>
+                                            <option value="2001">2001</option>
+                                            <option value="2002">2002</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group w-100 checkgroup">
+                            <input type="checkbox" checked id="ckeck-notify">
+                            <label for="ckeck-notify">i wish to recieve all update</label>
+                        </div>
+                        <div class="form-group w-100">
+                            <input type="submit" value="Create Account">
+                        </div>
+                    </form>
+                    <div class="forget-pass-group text-center m-0 mt-md-3">
+                        <p>Already have an Account? <a href="registration.html">Sign-In</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--=================Account Section================= -->
+
+    <!--=================Sponsor Section================= -->
+    <div class="sponsor-section padding-top padding-bottom">
+        <div class="container">
+            <div class="sponsor-slider">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="sponsor-thumb">
+                            <img src="{% static 'assets/images/sponsor/sponsor01.png' %}" alt="sponsor">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="sponsor-thumb">
+                            <img src="{% static 'assets/images/sponsor/sponsor02.png' %}" alt="sponsor">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="sponsor-thumb">
+                            <img src="{% static 'assets/images/sponsor/sponsor03.png' %}" alt="sponsor">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="sponsor-thumb">
+                            <img src="{% static 'assets/images/sponsor/sponsor04.png' %}" alt="sponsor">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="sponsor-thumb">
+                            <img src="{% static 'assets/images/sponsor/sponsor05.png' %}" alt="sponsor">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="sponsor-thumb">
+                            <img src="{% static 'assets/images/sponsor/sponsor06.png' %}" alt="sponsor">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="sponsor-thumb">
+                            <img src="assets/images/sponsor/sponsor07.png" alt="sponsor">
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="sponsor-thumb">
+                            <img src="{% static 'assets/images/sponsor/sponsor08.png' %}" alt="sponsor">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--=================Sponsor Section================= -->
+
+{% endblock body %}
+    
