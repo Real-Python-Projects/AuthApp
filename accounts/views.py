@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login, logout
@@ -18,7 +18,15 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 
 import threading
-# Create your views here.
+
+#africanstalking api
+import africastalking
+username= config("RETECH-ORG")
+api_key = config("api_key")
+africastalking.initialize(username, api_key)
+sms_provider = africastalking.SMS
+
+
 
 class EmailThread(threading.Thread):
     def __init__(self, mail):
@@ -43,6 +51,18 @@ def LogInView(request, *args, **kwargs):
         if user is not None:
             login(request, user)
             messages.info(request, "You have successfully logged in")
+            
+            user_phone = PhoneDb.objects.get(user = request.user)
+            
+            #phone verification view
+            if user_phone.is_verified == False:
+                phone_no = user_phone.phone
+                sms = sms_provider
+                sender_id = "DjangoAuth"
+                sms_content = f"{user_phone.otp} is your verification code"
+                recipients = [str(user_phone.phone)]
+                response = sms.send(sms_content, recipients)
+                return HttpResponseRedirect(reverse())
             return redirect('main:index')
         else:
             messages.error(request,"Ivalid Login")
@@ -117,6 +137,7 @@ def RegisterView(request):
                                      otp = random.randint(100000,999999),
                                      is_verified=False)
             phone_database.save()
+            
             
             uidb64 = urlsafe_base64_encode(force_bytes(user.pk))
             domain = get_current_site(request).domain #gives us the domain
@@ -255,6 +276,6 @@ def ResetPasswordView(request, uidb64, token):
             return render(request, 'auth/reset_password.html', context)
     return render(request, 'auth/reset_password.html', context)
 
-def confirm_sms(request, *args, **kwargs):
+def PhoneConfirmView(request, *args, **kwargs):
     pass
     
