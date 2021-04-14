@@ -17,11 +17,16 @@ from .models import Profile, PhoneDb
 from django.contrib.auth import get_user_model
 User = get_user_model()
 
+"""for threading function where a user 
+is told a function is complete while still loading
+"""
 import threading
 
+
 #africanstalking api
+from decouple import config
 import africastalking
-username= config("RETECH-ORG")
+username= config("username")
 api_key = config("api_key")
 africastalking.initialize(username, api_key)
 sms_provider = africastalking.SMS
@@ -54,7 +59,7 @@ def LogInView(request, *args, **kwargs):
             
             user_phone = PhoneDb.objects.get(user = request.user)
             
-            #phone verification view
+            #phone verification 
             if user_phone.is_verified == False:
                 phone_no = user_phone.phone
                 sms = sms_provider
