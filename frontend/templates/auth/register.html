@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load static %}
 
 {% block title %}
     Register
@@ -35,18 +35,24 @@
             <div class="account-wrapper">
                 <div class="account-area">
                     <h3 class="account-title">create new account</h3>
-                    <form class="sign-up-form">
-                        <div class="form-group">
-                            <input type="text" placeholder="First Name">
+                    <form action="" method="POST" class="sign-up-form">{% csrf_token %}
+                        <div class="form-group w-100">
+                            <input type="text" placeholder="username" name="username">
                         </div>
                         <div class="form-group">
-                            <input type="text" placeholder="Last Name">
+                            <input type="text" placeholder="First Name" name="first_name">
                         </div>
                         <div class="form-group">
-                            <input type="text" placeholder="Email or Phone">
+                            <input type="text" placeholder="Last Name" name="last_name">
+                        </div>
+                        <div class="form-group w-100">
+                            <input type="text" placeholder="Email" name="email">
                         </div>
                         <div class="form-group">
-                            <select class="select-bar w-100">
+                            <input type="text" placeholder="Phone eg.+254712860997" name='phone'>
+                        </div>
+                        <div class="form-group">
+                            <select class="select-bar w-100" name="gender">
                                 <option value="gender">Gender</option>
                                 <option value="male">Male</option>
                                 <option value="female">Female</option>
@@ -55,102 +61,21 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <input type="password" placeholder="Password" id="my-input-02">
+                            <input type="password" placeholder="Password" id="my-input-02" name="password1">
                             <span class="view-pass" id="view-pass-02">
                                 <i class="flaticon-eye"></i>
                             </span>
                         </div>
                         <div class="form-group">
-                            <input type="password" placeholder="Re-Password" id="my-input-03">
+                            <input type="password" placeholder="Re-Password" id="my-input-03" name="password2">
                             <span class="view-pass" id="view-pass-03">
                                 <i class="flaticon-eye"></i>
                             </span>
                         </div>
-                        <div class="w-100">
-                            <div class="row">
-                                <div class="col-12">
-                                    <label>Birthday</label>
-                                </div>
-                                <div class="col-sm-4">
-                                    <div class="form-group w-100">
-                                        <select class="select-bar w-100">
-                                            <option value="01">01</option>
-                                            <option value="02">02</option>
-                                            <option value="03">03</option>
-                                            <option value="04">04</option>
-                                            <option value="05">05</option>
-                                            <option value="06">06</option>
-                                            <option value="07">07</option>
-                                            <option value="08">08</option>
-                                            <option value="09">09</option>
-                                            <option value="10">10</option>
-                                            <option value="11">11</option>
-                                            <option value="12">12</option>
-                                            <option value="12">12</option>
-                                            <option value="13">13</option>
-                                            <option value="14">14</option>
-                                            <option value="15">15</option>
-                                            <option value="16">16</option>
-                                            <option value="17">17</option>
-                                            <option value="18">18</option>
-                                            <option value="19">19</option>
-                                            <option value="20">20</option>
-                                            <option value="21">21</option>
-                                            <option value="22">22</option>
-                                            <option value="23">23</option>
-                                            <option value="24">24</option>
-                                            <option value="25">25</option>
-                                            <option value="26">26</option>
-                                            <option value="27">27</option>
-                                            <option value="28">28</option>
-                                            <option value="29">29</option>
-                                            <option value="30">30</option>
-                                            <option value="31">31</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4">
-                                    <div class="form-group w-100">
-                                        <select class="select-bar w-100">
-                                            <option value="Month">Month</option>
-                                            <option value="January">January</option>
-                                            <option value="February">February</option>
-                                            <option value="March">March</option>
-                                            <option value="April">April</option>
-                                            <option value="May">May</option>
-                                            <option value="June">June</option>
-                                            <option value="July">July</option>
-                                            <option value="August">August</option>
-                                            <option value="September">September</option>
-                                            <option value="October">October</option>
-                                            <option value="November">November</option>
-                                            <option value="December">December</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4">
-                                    <div class="form-group w-100">
-                                        <select class="select-bar w-100">
-                                            <option value="year">Year</option>
-                                            <option value="1991">1991</option>
-                                            <option value="1992">1992</option>
-                                            <option value="1993">1993</option>
-                                            <option value="1994">1994</option>
-                                            <option value="1995">1995</option>
-                                            <option value="1996">1996</option>
-                                            <option value="1997">1997</option>
-                                            <option value="1998">1998</option>
-                                            <option value="1999">1999</option>
-                                            <option value="2000">2000</option>
-                                            <option value="2001">2001</option>
-                                            <option value="2002">2002</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        
+
                         <div class="form-group w-100 checkgroup">
-                            <input type="checkbox" checked id="ckeck-notify">
+                            <input type="checkbox" checked id="ckeck-notify" name="subscribe">
                             <label for="ckeck-notify">i wish to recieve all update</label>
                         </div>
                         <div class="form-group w-100">
@@ -158,7 +83,7 @@
                         </div>
                     </form>
                     <div class="forget-pass-group text-center m-0 mt-md-3">
-                        <p>Already have an Account? <a href="registration.html">Sign-In</a></p>
+                        <p>Already have an Account? <a href="{% url 'accounts:login' %}">Sign-In</a></p>
                     </div>
                 </div>
             </div>

@@ -12,6 +12,8 @@ from .utils import token_gen
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from django.core.validators import validate_email
 from .forms import ResetEmailForm
+import random
+from .models import Profile, PhoneDb
 from django.contrib.auth import get_user_model
 User = get_user_model()
 
@@ -57,14 +59,21 @@ def LogOutView(request, *args, **kwargs):
 def RegisterView(request):
     if request.method == 'POST':
         username = request.POST.get('username')
+        first_name = request.POST.get('first_name')
+        last_name = request.POST.get('last_name')
+        gender = request.POST.get("gender")
         email = request.POST.get('email')
+        phone = request.POST.get('phone')
         password1 = request.POST.get('password1')
         password2 = request.POST.get('password2')
+        subscribe = request.POST.get('subscribe')
         
         if username == "":
             messages.error(request, "Username is required")
         if email == "":
             messages.error(request, "Email is required")
+        if phone == "":
+            messages.error(request, "Phone is required")
         if password1 == "":
             messages.error(request, "Password is required")
         if password2 == "":
@@ -75,7 +84,10 @@ def RegisterView(request):
             messages.error(request, "A user with the username exists")
         if User.objects.filter(email=email).exists():
             messages.error(request, "The Email has already been taken")
-            return redirect('accounts:register') 
+        if  Profile.objects.filter(phone=phone).exists():
+            messages.error(request, "The phone number already exists")
+            return redirect('accounts:register')
+
         
         if password1 != password2:
             messages.error(request, "Passwords do not match")
@@ -85,10 +97,26 @@ def RegisterView(request):
             
                 
         else:
-            user = User.objects.create_user(username=username, email=email)
+            user = User.objects.create_user(username=username, 
+                                            email=email, 
+                                            first_name=first_name,
+                                            last_name=last_name)
             user.set_password(password1)
             user.is_active=False
             user.save()
+            
+            profile = Profile.objects.get(user=user)
+            profile.phone = phone
+            profile.gender = gender
+            profile.save()
+
+            
+            phone_database = PhoneDb(user=user,
+                                     phone=phone,
+                                     gender=gender,
+                                     otp = random.randint(100000,999999),
+                                     is_verified=False)
+            phone_database.save()
             
             uidb64 = urlsafe_base64_encode(force_bytes(user.pk))
             domain = get_current_site(request).domain #gives us the domain

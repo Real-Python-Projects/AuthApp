@@ -21,7 +21,7 @@ class Profile(models.Model):
                             options={'quality':80})
     bio = models.TextField()
     phone = models.CharField(max_length=13)
-    tel_no = models.CharField(max_length=10)
+    gender = models.CharField(max_length=20)
     slug = models.SlugField(blank=True)
     
     def __str__(self):
@@ -39,6 +39,7 @@ class Profile(models.Model):
 class PhoneDb(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     phone = models.CharField(max_length=13)
+    gender = models.CharField(max_length=25)
     otp = models.IntegerField(null=True)
     is_verified = models.BooleanField(default=True)
     
